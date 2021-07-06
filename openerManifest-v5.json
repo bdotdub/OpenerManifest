@@ -5507,6 +5507,25 @@
             ]
         },
         {
+            "title": "Open Listing",
+            "regex": "https?://(?:\\w+\\.)?streeteasy\\.com/sale/(\\d+)$",
+            "testInputs": [
+                "https://streeteasy.com/sale/1544178",
+                "https://streeteasy.com/building/atelier-condominium/9b"
+            ],
+            "formats": [
+                {
+                    "appId": "streeteasy",
+                    "format": "streeteasy://$1",
+                    "script2": "function process(url, completionHandler) { var results = RegExp('ios-app://660363289/streeteasy/([^\\']+)\\'').exec(url); var match = results != null && results.length > 1 ? 'streeteasy://' + results[1] : null; completionHandler(match); }",
+                    "testResults": [
+                        "streeteasy://sale/1544178",
+                        "streeteasy://rental/2770017"
+                    ]
+                }
+            ]
+        },
+        {
             "title": "Open Illustration",
             "regex": "https?(://(?:\\w+\\.)?pixiv\\.net/(?:(?:.+/)?artworks/|member_illust\\.php?.*illust_id=)(\\d+).*)$",
             "testInputs": [
